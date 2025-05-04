@@ -9,7 +9,7 @@ document.getElementById('generate').addEventListener('click', function() {
     document.getElementById('password').value = password;
 
     const strength = checkStrength(password);
-    document.getElementById('strength').textContent = strength.label;
+    document.getElementById('strength').textContent = `Strength: ${strength.label}`;
     document.getElementById('strength').style.color = strength.color;
 });
 
@@ -25,7 +25,7 @@ function generatePassword(length, hasUppercase, hasLowercase, hasNumbers, hasSpe
     const lowercase = "abcdefghijklmnopqrstuvwxyz";
     const numbers = "0123456789";
     const special = "!@#$%^&*()_+[]{}|;:,.<>?/";
-    
+
     let characters = "";
     if (hasUppercase) characters += uppercase;
     if (hasLowercase) characters += lowercase;
@@ -33,7 +33,7 @@ function generatePassword(length, hasUppercase, hasLowercase, hasNumbers, hasSpe
     if (hasSpecial) characters += special;
 
     if (characters === "") return ""; // No characters selected
-    
+
     let password = "";
     for (let i = 0; i < length; i++) {
         password += characters.charAt(Math.floor(Math.random() * characters.length));
